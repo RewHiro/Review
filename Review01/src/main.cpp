@@ -7,11 +7,6 @@ enum WindowSize {
   HEIGHT = 512,
 };
 
-enum class DirectionState{
-	LEFT,
-	RIGHT,
-};
-
 class Player{
 	Vec2f pos = Vec2f::Zero();
 	Vec2f size = Vec2f(256,128);
@@ -22,7 +17,6 @@ class Player{
 	const Vec2f INFIMUM = Vec2f(-WindowSize::WIDTH *.5f + origin.x(), -WindowSize::HEIGHT*.5f + origin.y());
 	Texture texture = Texture("res/player_img.png");
 	float rotate = .0f;
-	DirectionState direction_state = DirectionState::LEFT;
 
 public:
 	void Update(AppEnv& env){
@@ -35,13 +29,11 @@ public:
 			pos.y() = std::max(pos.y(), INFIMUM.y());
 		}
 		if (env.isPressKey('D')){
-			direction_state = DirectionState::RIGHT;
 			scale.x() = 1;
 			pos.x() += speed.x();
 			pos.x() = std::min(pos.x(), SUPREMUM.x());
 		}
 		if (env.isPressKey('A')){
-			direction_state = DirectionState::LEFT;
 			scale.x() = -1;
 			pos.x() += -speed.x();
 			pos.x() = std::max(pos.x(), INFIMUM.x());

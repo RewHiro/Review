@@ -17,6 +17,7 @@ class Player{
 	const Vec2f INFIMUM = Vec2f(-WindowSize::WIDTH *.5f + origin.x(), -WindowSize::HEIGHT*.5f + origin.y());
 	Texture texture = Texture("res/player_img.png");
 	float rotate = .0f;
+	Color color = Color::white;
 
 public:
 	void Update(AppEnv& env){
@@ -43,7 +44,7 @@ public:
 	void Draw(){
 		drawTextureBox(pos.x(), pos.y(), size.x(), size.y(),
 			0, 0, texture.width(), 128, 
-			texture, Color::white,
+			texture, color,
 			rotate,scale,origin);
 	}
 };

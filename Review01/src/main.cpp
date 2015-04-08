@@ -56,11 +56,11 @@ int main() {
   Player player;
 
   while (env.isOpen()) {
+	player.Update(env);
+
     env.begin();
 
-	player.Update(env);
 	player.Draw();
-
 
     env.end();
   }
